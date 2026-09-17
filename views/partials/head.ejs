@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CyberMart - Gadgets &amp; Security Gear</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Cyber<span>Mart</span></a>
+    <nav class="main-nav">
+      <a href="/products" class="<%= path === '/products' ? 'active' : '' %>">Shop</a>
+      <a href="/diagnostics" class="<%= path.startsWith('/diagnostics') ? 'active' : '' %>">Diagnostics</a>
+    </nav>
+    <form class="search" action="/products" method="get">
+      <input type="search" name="q" value="<%= q %>" placeholder="Search products..." aria-label="Search products">
+      <button type="submit">Search</button>
+    </form>
+    <div class="account">
+      <% if (user) { %>
+        <a href="/account" class="account-link">👤 <%= user.name %></a>
+        <a href="/logout">Sign out</a>
+      <% } else { %>
+        <a href="/login">Sign in</a>
+        <a href="/register" class="btn-small">Create account</a>
+      <% } %>
+    </div>
+  </div>
+</header>
+<main class="container">

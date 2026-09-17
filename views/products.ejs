@@ -1,0 +1,35 @@
+<%- include('partials/head') %>
+
+<div class="section-head">
+  <h1>Shop</h1>
+  <% if (q) { %><p class="muted">Results for "<%= q %>" - <strong><%= count %></strong> item(s) found</p><% } %>
+</div>
+
+<% if (typeof dbError !== 'undefined' && dbError) { %>
+  <div class="alert">
+    <strong>Something went wrong while searching.</strong>
+    <pre><%= dbError %></pre>
+    <p class="small">Query: <code><%= sql %></code></p>
+  </div>
+<% } %>
+
+<div class="grid">
+  <% rows.forEach(function (p) { %>
+    <a class="card product-card" href="/product/<%= p.id %>">
+      <div class="thumb"><%= p.img %></div>
+      <div class="card-body">
+        <h3><%= p.name %></h3>
+        <p><%= p.description %></p>
+        <div class="row between">
+          <span class="price">$<%= p.price.toFixed(2) %></span>
+          <span class="buy">View &rarr;</span>
+        </div>
+      </div>
+    </a>
+  <% }) %>
+  <% if (!rows.length && !dbError) { %>
+    <p class="muted">No products matched your search. Try another term.</p>
+  <% } %>
+</div>
+
+<%- include('partials/foot') %>

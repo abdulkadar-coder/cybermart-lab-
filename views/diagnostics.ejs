@@ -1,0 +1,26 @@
+<%- include('partials/head') %>
+
+<div class="section-head">
+  <h1>Network Diagnostics</h1>
+  <p class="muted">Internal tool for the CyberMart engineering team. Check host reachability
+  from our edge network.</p>
+</div>
+
+<div class="card tool">
+  <form action="/diagnostics" method="get" class="row">
+    <label for="host">Host</label>
+    <input id="host" type="text" name="host" value="<%= host %>" placeholder="host or IP address">
+    <button type="submit" class="btn">Run diagnostics</button>
+  </form>
+  <p class="small muted">Pings the target 1 time and reports round-trip statistics. Tool version 2.3.1.</p>
+</div>
+
+<div class="card terminal">
+  <div class="term-head">
+    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+    <span class="term-title">diagnostics@cybermart</span>
+  </div>
+  <pre class="term-body"><%= output %></pre>
+</div>
+
+<%- include('partials/foot') %>

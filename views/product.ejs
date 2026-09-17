@@ -1,0 +1,50 @@
+<%- include('partials/head') %>
+
+<nav class="crumbs"><a href="/products">Shop</a> &rsaquo; <span><%= product.name %></span></nav>
+
+<div class="product-layout">
+  <div class="product-photo"><%= product.img %></div>
+  <div class="product-info">
+    <h1><%= product.name %></h1>
+    <p class="price big">$<%= product.price.toFixed(2) %></p>
+    <p><%= product.description %></p>
+    <ul class="props">
+      <li>&#10003; In stock, ships within 24h</li>
+      <li>&#10003; 30-day money-back guarantee</li>
+    </ul>
+    <button class="btn" type="button">Add to cart</button>
+  </div>
+</div>
+
+<section class="reviews">
+  <div class="section-head">
+    <h2>Customer reviews</h2>
+    <span class="muted small"><%= reviews.length %> review(s)</span>
+  </div>
+
+  <div class="review-list">
+    <% reviews.forEach(function (r) { %>
+      <article class="review">
+        <div class="review-head">
+          <strong><%= r.authorName %></strong>
+          <span class="muted small"><%= r.at %></span>
+        </div>
+        <div class="review-body"><%- r.text %></div>
+      </article>
+    <% }) %>
+    <% if (!reviews.length) { %><p class="muted">No reviews yet. Be the first to leave one!</p><% } %>
+  </div>
+
+  <form class="review-form" action="/product/<%= product.id %>/review" method="post">
+    <h3>Leave a review</h3>
+    <% if (!user) { %>
+      <p class="muted">Please <a href="/login">sign in</a> to leave a review.</p>
+    <% } else { %>
+      <label for="text">Your review</label>
+      <textarea id="text" name="text" rows="4" placeholder="What did you think?"></textarea>
+      <button type="submit" class="btn">Post review</button>
+    <% } %>
+  </form>
+</section>
+
+<%- include('partials/foot') %>

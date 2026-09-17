@@ -1,0 +1,57 @@
+<%- include('partials/head') %>
+
+<section class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow">New drop · 2025 collection</p>
+    <h1>Everything a hacker needs, in one store.</h1>
+    <p class="muted lead">Courses, gadgets and gear for pentesters, defenders and everyone in
+    between. Free shipping over $50.</p>
+    <div class="row">
+      <a href="/products" class="btn">Shop the collection</a>
+      <a href="/diagnostics" class="btn ghost">Check network status</a>
+    </div>
+  </div>
+  <div class="hero-badge">
+    <div class="badge-card">
+      <span class="big">10k+</span>
+      <span class="small">orders shipped</span>
+    </div>
+    <div class="badge-card">
+      <span class="big">4.9&#9733;</span>
+      <span class="small">from 2,300 reviews</span>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <h2>Featured products</h2>
+    <a href="/products" class="muted">View all &rarr;</a>
+  </div>
+  <div class="grid">
+    <% products.forEach(function (p) { %>
+      <a class="card product-card" href="/product/<%= p.id %>">
+        <div class="thumb"><%= p.img %></div>
+        <div class="card-body">
+          <h3><%= p.name %></h3>
+          <p><%= p.description %></p>
+          <div class="row between">
+            <span class="price">$<%= p.price.toFixed(2) %></span>
+            <span class="buy">View &rarr;</span>
+          </div>
+        </div>
+      </a>
+    <% }) %>
+  </div>
+</section>
+
+<section class="section value">
+  <h2>Why shop with CyberMart?</h2>
+  <div class="grid three">
+    <div class="card"><span class="big">🛡️</span><h3>Security first</h3><p>Every order protected by industry grade (allegedly) defence systems.</p></div>
+    <div class="card"><span class="big">⚡</span><h3>Instant delivery</h3><p>Digital courses deliver straight to your inbox the second you buy them.</p></div>
+    <div class="card"><span class="big">💎</span><h3>Fair prices</h3><p>The lowest prices you'll find, guaranteed.</p></div>
+  </div>
+</section>
+
+<%- include('partials/foot') %>

@@ -1,0 +1,15 @@
+{
+  "name": "owasp-top10-2025-lab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CyberMart - a realistic storefront intentionally vulnerable to A05:2025 Injection (SQLi in product search, stored XSS in reviews, command injection in the diagnostics tool). FOR LOCAL EDUCATIONAL USE ONLY.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0"
+  }
+}
